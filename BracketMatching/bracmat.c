@@ -6,9 +6,39 @@ struct Stack {
     char* array; 
 }; 
 
+struct Stack* create(char max) 
+{ 
+    struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack)); 
+    stack->maxSize = max; 
+    stack->top = -1; 
+    stack->array = (char*)malloc(stack->maxSize * sizeof(char));
+    // here above memory for array is being created
+    // size would be 10*4 = 40
+    return stack; 
+}
+
+// Checking with this function is stack is full or not
+// Will return true is stack is full else false 
+//Stack is full when top is equal to the last index 
+int isFull(struct Stack* stack) 
+{ 
+    if(stack->top == stack->maxSize - 1){
+        printf("Will not be able to push maxSize reached\n");
+    }
+    // Since array starts from 0, and maxSize starts from 1
+    return stack->top == stack->maxSize - 1; 
+}
+
 int isEmpty(struct Stack* stack) 
 { 
     return stack->top == -1; 
+}
+
+void push(struct Stack* stack, char item) 
+{ 
+    if (isFull(stack)) 
+        return; 
+    stack->array[++stack->top] = item; 
 }
 
 void pop(struct Stack* stack) 
@@ -18,6 +48,13 @@ void pop(struct Stack* stack)
     
     stack->array[stack->top--]; 
 } 
+
+int peek(struct Stack* stack) 
+{ 
+    if (isEmpty(stack)) 
+        return INT_MIN; 
+    return stack->array[stack->top]; 
+}  
 
 bool checkPair(char val1,char val2){
     return (( val1=='(' && val2==')' )||( val1=='[' && val2==']' )||( val1=='{' && val2=='}' ));
