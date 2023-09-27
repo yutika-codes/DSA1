@@ -4,6 +4,7 @@
 #define false 0
 #define true 1
 #define MAX 100
+#define stdlib
 
 struct Stack { 
     int top; 
