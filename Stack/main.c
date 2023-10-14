@@ -1,16 +1,14 @@
-#include <stdio.h>
 #include "stack.h"
+#include <stdio.h>
 
 int main() {
-  int ch;
-  st *s = (st *)malloc(sizeof(st));
+    struct Stack stack;
+    initialize(&stack);
 
-  createEmptyStack(s);
+    // Push some elements onto the stack
+    push(&stack, 5);
+    push(&stack, 10);
+    push(&stack, 15);
 
-  push(s, 12);
-  push(s, 15);
-  
-  printStack(s);
-
-
+    return 0;
 }

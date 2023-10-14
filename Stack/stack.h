@@ -1,20 +1,14 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define MAX 20
+#define MAX_SIZE 20
 
-int count = 0;
-
-// Creating a stack
-struct stack {
-  int num[MAX];
-  int top;
+struct Stack {
+    int items[MAX_SIZE];
+    int top;
 };
-typedef struct stack st;
 
-void createEmptyStack(st *s);
-int isempty(st *s);
-void push(st *s, int newitem);
-
+void initialize(struct Stack *stack);
+void push(struct Stack *stack, int item);
 
 #endif
