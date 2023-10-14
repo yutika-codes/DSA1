@@ -12,9 +12,11 @@ int main() {
 
     printf("Pre-order traversal: ");
     preOrderTraversal(root);
+    printf("\n");
 
     printf("\nPostorder traversal \n");
     postorderTraversal(root);
+    printf("\n");
     
     return 0;
 }
