@@ -13,3 +13,6 @@ void push(struct Stack *stack, int item) {
         printf("%d pushed to the stack\n", item);
     }
 }
+
+
+
