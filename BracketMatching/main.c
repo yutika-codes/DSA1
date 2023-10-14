@@ -1,13 +1,23 @@
+// main.c
+
+#include <stdio.h>
 #include "bracmat.h"
 
-
-
 int main() {
-  char exp[MAX] = "({})[]";
+    const char *expression1 = "((a+b)*(c-d))";
+    const char *expression2 = "[(a+b)]*(c-d))";
 
-  int len = strlen(exp);
-  struct Stack* stack = create(len); 
-  checkBalanced(stack, exp, len)?printf("Balanced"): printf("Not Balanced"); 
+    if (isBracketMatching(expression1)) {
+        printf("Expression 1 is bracket matching.\n");
+    } else {
+        printf("Expression 1 is not bracket matching.\n");
+    }
 
-  return 0;
+    if (isBracketMatching(expression2)) {
+        printf("Expression 2 is bracket matching.\n");
+    } else {
+        printf("Expression 2 is not bracket matching.\n");
+    }
+
+    return 0;
 }
