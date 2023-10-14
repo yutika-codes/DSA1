@@ -13,5 +13,12 @@ int main() {
     printf("Pre-order traversal: ");
     preOrderTraversal(root);
 
+    printf("\nPostorder traversal \n");
+    postorderTraversal(root);
+    
     return 0;
 }
+
+
+  
+

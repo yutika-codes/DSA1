@@ -15,3 +15,10 @@ struct TreeNode* createNode(int data) {
 
     return newNode;
 }
+
+
+// Insert on the left of the node
+struct TreeNode* insertLeft(struct TreeNode* root, int value) {
+  root->left = createNode(value);
+  return root->left;
+}

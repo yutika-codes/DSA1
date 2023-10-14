@@ -4,4 +4,5 @@
 
 void preOrderTraversal(struct TreeNode* root);
 
+void postorderTraversal(struct TreeNode* root);
 #endif
