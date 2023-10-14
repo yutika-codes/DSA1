@@ -1,48 +1,67 @@
+
 #include <stdio.h>
 #include "heapsort.h"
 
-// Define a comparator function for characters
-int compareChar(const void *a, const void *b) {
-    return *(char *)a - *(char *)b;
-}
-
-// Define a comparator function for integers
-int compareInt(const void *a, const void *b) {
-    return *(int *)a - *(int *)b;
-}
-
-void heapify(void *arr, int n, int i, size_t size, int (*compare)(const void *, const void *)) {
+static void maxHeapify(int arr[], int n, int i) {
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
-    if (left < n && compare((char *)arr + left * size, (char *)arr + largest * size) > 0)
+    if (left < n && arr[left] > arr[largest])
         largest = left;
 
-    if (right < n && compare((char *)arr + right * size, (char *)arr + largest * size) > 0)
+    if (right < n && arr[right] > arr[largest])
         largest = right;
 
     if (largest != i) {
-        char temp[size];
-        memcpy(temp, (char *)arr + i * size, size);
-        memcpy((char *)arr + i * size, (char *)arr + largest * size, size);
-        memcpy((char *)arr + largest * size, temp, size);
-
-        heapify(arr, n, largest, size, compare);
+        int temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+        maxHeapify(arr, n, largest);
     }
 }
 
-void heapSort(void *arr, int n, size_t size, int (*compare)(const void *, const void *)) {
+static void charMaxHeapify(char arr[], int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+
+    if (largest != i) {
+        char temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+        charMaxHeapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n) {
     for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i, size, compare);
+        maxHeapify(arr, n, i);
 
     for (int i = n - 1; i > 0; i--) {
-        char temp[size];
-        memcpy(temp, (char *)arr, size);
-        memcpy((char *)arr, (char *)arr + i * size, size);
-        memcpy((char *)arr + i * size, temp, size);
-
-        heapify(arr, i, 0, size, compare);
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+        maxHeapify(arr, i, 0);
     }
 }
+
+void charHeapSort(char arr[], int n) {
+    for (int i = n / 2 - 1; i >= 0; i--)
+        charMaxHeapify(arr, n, i);
+
+    for (int i = n - 1; i > 0; i--) {
+        char temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+        charMaxHeapify(arr, i, 0);
+    }
+}
+
 

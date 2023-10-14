@@ -1,43 +1,30 @@
+
 #include <stdio.h>
-#include <stdlib.h>
 #include "heapsort.h"
 
 int main() {
-    // Example for sorting integers
-    int intArr[] = {12, 11, 13, 5, 6, 7};
+    int intArr[] = {4, 10, 3, 5, 1};
+    char charArr[] = "heap";
+
     int n = sizeof(intArr) / sizeof(intArr[0]);
-    heapSort(intArr, n, sizeof(intArr[0]), compareInt);
-    printf("Sorted integers: ");
-    for (int i = 0; i < n; i++) {
+    int char_n = sizeof(charArr) - 1; // Length of character array
+
+    printf("Original integer array: ");
+    for (int i = 0; i < n; i++)
         printf("%d ", intArr[i]);
-    }
     printf("\n");
 
-    // Example for sorting characters
-    char charArr[] = "heapSort";
-    n = strlen(charArr);
-    heapSort(charArr, n, sizeof(charArr[0]), compareChar);
-    printf("Sorted characters: %s\n", charArr);
+    printf("Original character array: %s\n", charArr);
 
-    return 0;
-}
+    heapSort(intArr, n);
+    charHeapSort(charArr, char_n);
 
-int main() {
-    // Example for sorting integers
-    int intArr[] = {12, 11, 13, 5, 6, 7};
-    int n = sizeof(intArr) / sizeof(intArr[0]);
-    heapSort(intArr, n, sizeof(intArr[0]), compareInt);
-    printf("Sorted integers: ");
-    for (int i = 0; i < n; i++) {
+    printf("Sorted integer array: ");
+    for (int i = 0; i < n; i++)
         printf("%d ", intArr[i]);
-    }
     printf("\n");
 
-    // Example for sorting characters
-    char charArr[] = "heapSort";
-    n = strlen(charArr);
-    heapSort(charArr, n, sizeof(charArr[0]), compareChar);
-    printf("Sorted characters: %s\n", charArr);
+    printf("Sorted character array: %s\n", charArr);
 
     return 0;
 }
