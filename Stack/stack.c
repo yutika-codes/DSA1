@@ -1,23 +1,15 @@
 #include "stack.h"
+#include <stdio.h>
 
-void createEmptyStack(st *s) {
-  s->top = -1;
+void initialize(struct Stack *stack) {
+    stack->top = -1;
 }
 
-int isempty(st *s) {
-  if (s->top == -1)
-    return 1;
-  else
-    return 0;
-}
-
-
-void push(st *s, int newnum) {
-  if (isfull(s)) {
-    printf("STACK FULL");
-  } else {
-    s->top++;
-    s->num[s->top] = newnum;
-  }
-  count++;
+void push(struct Stack *stack, int item) {
+    if (stack->top == MAX_SIZE - 1) {
+        printf("Stack is full. Cannot push %d\n", item);
+    } else {
+        stack->items[++stack->top] = item;
+        printf("%d pushed to the stack\n", item);
+    }
 }
