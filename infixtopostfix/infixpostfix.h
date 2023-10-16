@@ -1,13 +1,10 @@
-#ifndef INFIXPOSTFIX_H
-#define INFIXPOSTFIX_H
+#ifndef INFIXTOPOSTFIX_H
+#define INFIXTOPOSTFIX_H
 
+#define STACK_SIZE 100
 
-//creation
-char stack[100];
-int top = -1;
-
-int priority(char x);
-void push(char x);
-char pop();
+int isOperator(char c);
+int precedence(char op);
+char* infixToPostfix(char* infix);
 
 #endif
